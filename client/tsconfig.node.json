@@ -17,15 +17,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-
-    /* Type definitions */
-    "types": ["node", "@types/testing-library__jest-dom"],
-
-    /* Path resolution */
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
   },
   "include": ["vite.config.ts"]
 }
