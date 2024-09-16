@@ -1,5 +1,5 @@
 import { Welcome } from "src/presentation/pages";
 
-export const makeHome = () => {
+export const makeWelcome = () => {
   return <Welcome />;
 };
