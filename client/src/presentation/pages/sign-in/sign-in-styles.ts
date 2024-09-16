@@ -46,7 +46,7 @@ export const Input = styled.input`
   margin: 10px 0;
   padding: 10px;
   letter-spacing: -1px;
-  border-radius: 10px;
+  border-radius: 2px;
 `;
 export const Signup = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.default};
