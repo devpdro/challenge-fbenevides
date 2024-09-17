@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import { RegisterService } from "src/main/services";
 
 export const RegisterController = async (req: Request, res: Response) => {
