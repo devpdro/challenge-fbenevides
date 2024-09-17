@@ -8,6 +8,6 @@ export const signInValidationSchema = yup.object().shape({
     .required("Email é obrigatório"),
   password: yup
     .string()
-    .min(6, "Senha deve ter pelo menos 6 caracteres")
+    .min(4, "Senha deve ter pelo menos 4 caracteres")
     .required("Senha é obrigatória"),
 });

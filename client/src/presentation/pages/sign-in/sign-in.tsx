@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAtom } from "jotai";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -7,8 +8,9 @@ import * as yup from "yup";
 import { Grid } from "@mantine/core";
 
 import { Button } from "src/presentation/components";
-import { BASE_URL_API } from "src/constants";
 import { signInValidationSchema } from "src/utils";
+import { authState } from "src/infra/store/auth";
+import { BASE_URL_API } from "src/constants";
 
 import * as S from "./sign-in-styles";
 
@@ -17,6 +19,7 @@ type SignInFormSchema = yup.InferType<typeof signInValidationSchema>;
 const SignIn = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [, setAuthenticationState] = useAtom(authState);
 
   const {
     register,
@@ -36,12 +39,14 @@ const SignIn = () => {
         credentials: "include",
         body: JSON.stringify(data),
       });
+      const { token } = await response.json();
+      setAuthenticationState({ token: token });
 
       if (!response.ok) {
         throw new Error("Erro ao fazer login. Por favor, tente novamente...");
       }
 
-      navigate("/home");
+      navigate("/welcome");
     } catch (error) {
       if (error instanceof Error) {
         setErrorMessage(error.message);

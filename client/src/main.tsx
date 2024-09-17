@@ -1,4 +1,5 @@
 import { StrictMode } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 
 import App from "./App.tsx";
@@ -12,11 +13,13 @@ import theme from "src/presentation/styles/themes/light.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MantineProvider>
-      <ThemeProvider theme={theme}>
-        <Global styles={globalStyles} />
-        <App />
-      </ThemeProvider>
-    </MantineProvider>
+    <Router>
+      <MantineProvider>
+        <ThemeProvider theme={theme}>
+          <Global styles={globalStyles} />
+          <App />
+        </ThemeProvider>
+      </MantineProvider>
+    </Router>
   </StrictMode>
 );

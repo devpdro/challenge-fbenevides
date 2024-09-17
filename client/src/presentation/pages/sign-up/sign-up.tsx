@@ -38,12 +38,15 @@ const SignUp = () => {
         credentials: "include",
         body: JSON.stringify({ email, password }),
       });
-
+      const responseData = await response.json();
       if (!response.ok) {
-        throw new Error("Erro ao criar conta. Por favor, tente novamente...");
+        throw new Error(
+          responseData.message ||
+            "Erro ao criar conta. Por favor, tente novamente..."
+        );
       }
 
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       if (error instanceof Error) {
         setErrorMessage(error.message);

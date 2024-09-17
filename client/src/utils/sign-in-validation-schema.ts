@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const signUpValidationSchema = yup.object().shape({
   name: yup
     .string()
-    .min(8, "Nome completo deve ter pelo menos 8 caracteres")
+    .min(6, "Nome completo deve ter pelo menos 6 caracteres")
     .required("Nome completo é obrigatório"),
 
   email: yup
