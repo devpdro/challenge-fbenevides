@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import { makeWelcome, makeSignIn, makeSignUp } from "src/main/factories/pages";
+import { PrivateRoute } from "src/route";
 
 const App = () => {
   return (
@@ -8,7 +9,10 @@ const App = () => {
       <Route path="/" element={makeSignIn()} />
       <Route path="/registrar" element={makeSignUp()} />
 
-      <Route path="/welcome" element={<>{makeWelcome()}</>} />
+      <Route
+        path="/welcome"
+        element={<PrivateRoute>{makeWelcome()}</PrivateRoute>}
+      />
     </Routes>
   );
 };
