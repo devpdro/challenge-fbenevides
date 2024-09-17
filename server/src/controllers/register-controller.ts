@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
-import { RegisterService } from "src/main/services";
+import { registerService } from "src/main/services";
 
-export const RegisterController = async (req: Request, res: Response) => {
+export const registerController = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -12,7 +12,7 @@ export const RegisterController = async (req: Request, res: Response) => {
   }
 
   try {
-    const result = await RegisterService(name, email, password);
+    const result = await registerService(name, email, password);
     res
       .status(result.status)
       .json({ token: result.token, message: result.message });

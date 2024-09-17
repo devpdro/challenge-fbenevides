@@ -1,6 +1,6 @@
 import { type Request, type Response, type NextFunction } from "express";
 
-import { ValidateToken } from "src/main/services";
+import { validateToken } from "src/main/services";
 import { AppError } from "src/middlewares";
 
 const excludedRoutes = ["/auth/login", "/auth/register", "/auth/validate"];
@@ -23,7 +23,7 @@ export const verifyTokenMiddleware = async (
     }
 
     const token = authorizationHeader.split(" ")[1];
-    ValidateToken(token);
+    validateToken(token);
 
     next();
   } catch (error: any) {

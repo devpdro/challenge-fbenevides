@@ -3,11 +3,7 @@ import jwt from "jsonwebtoken";
 import { prisma } from "src/lib/prisma";
 import { BASE_JWT_SECRET } from "src/constants";
 
-export const RegisterService = async (
-  name: string,
-  email: string,
-  password: string
-) => {
+export const registerService = async (name: string, email: string, password: string) => {
   const existingUser = await prisma.account.findFirst({
     where: { email },
   });

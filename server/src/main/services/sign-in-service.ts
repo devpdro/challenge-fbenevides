@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { prisma } from "src/lib";
 import { BASE_JWT_SECRET } from "src/constants";
 
-export const SignInService = async (email: string, password: string) => {
+export const signInService = async (email: string, password: string) => {
   const user = await prisma.account.findFirst({
     where: { email },
   });

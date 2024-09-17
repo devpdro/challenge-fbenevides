@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
-import { SignInService } from "src/main/services";
+import { signInService } from "src/main/services";
 
-export const SignInController = async (req: Request, res: Response) => {
+export const signInController = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -10,7 +10,7 @@ export const SignInController = async (req: Request, res: Response) => {
   }
 
   try {
-    const result = await SignInService(email, password);
+    const result = await signInService(email, password);
 
     if (result.status === 200 && result.token) {
       res.cookie("token", result.token, {
