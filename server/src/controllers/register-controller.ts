@@ -1,18 +1,16 @@
 import { Request, Response } from "express";
-
 import { registerService } from "src/main/services";
 
 export const registerController = async (req: Request, res: Response) => {
-  const { name, email, password } = req.body;
+  console.log(req.body);
+  const { email, password } = req.body;
 
-  if (!name || !email || !password) {
-    return res
-      .status(400)
-      .json({ message: "Nome, email e senha são obrigatórios" });
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email e senha são obrigatórios" });
   }
 
   try {
-    const result = await registerService(name, email, password);
+    const result = await registerService(email, password);
     res
       .status(result.status)
       .json({ token: result.token, message: result.message });

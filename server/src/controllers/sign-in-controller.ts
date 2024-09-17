@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import { signInService } from "src/main/services";
 
 export const signInController = async (req: Request, res: Response) => {

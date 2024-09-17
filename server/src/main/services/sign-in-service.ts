@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import { prisma } from "src/lib";
+import { prisma } from "src/lib/prisma";
 import { BASE_JWT_SECRET } from "src/constants";
 
 export const signInService = async (email: string, password: string) => {
